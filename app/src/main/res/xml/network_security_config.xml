@@ -1,6 +1,6 @@
 <!-- network_security_config.xml -->
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">59.xxx.85.xx</domain>
+        <domain includeSubdomains="true">59.XX.85.XX</domain>
     </domain-config>
 </network-security-config>

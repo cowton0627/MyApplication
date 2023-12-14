@@ -1,12 +1,17 @@
 package com.example.myapplication
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.webkit.WebResourceRequest
-import android.webkit.WebResourceError
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
+
 //import android.os.Build
 //import com.example.myapplication.BuildConfig
 
@@ -56,7 +61,6 @@ class MainActivity : AppCompatActivity() {
         webViewSettings.javaScriptEnabled = true
         webViewSettings.domStorageEnabled = true
 
-        webView.loadUrl("http://59.xxx.85.xx:xxxxx")
 //        webView.loadUrl("https://google.com")
 
 
@@ -78,3 +82,37 @@ class MainActivity : AppCompatActivity() {
 //        }
 //    }
 }
+
+class BootReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        val i = Intent(context, MainActivity::class.java)
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(i)
+    }
+}
+
+//class BootBroadcastReceiver : BroadcastReceiver() {
+//    override fun onReceive(context: Context, intent: Intent) {
+//        if (intent.action == Intent.ACTION_BOOT_COMPLETED) {
+//            //Intent.ACTION_BOOT_COMPLETED == android.intent.action.BOOT_COMPLETED
+//            val intent1 = Intent(context, MainActivity::class.java)
+//            intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//            context.startActivity(intent1)
+//            //執行一個Activity
+//
+////            val intent2 = Intent(context, MyService::class.java)
+////            context.startService(intent2)
+//            //執行一個Service
+//        }
+//    }
+//}
+
+//class BootReceiver : BroadcastReceiver() {
+//    override fun onReceive(context: Context, intent: Intent) {
+//        if (Intent.ACTION_BOOT_COMPLETED == intent.action) {
+//            val activityIntent = Intent(context, MainActivity::class.java)
+//            activityIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//            context.startActivity(activityIntent)
+//        }
+//    }
+//}
